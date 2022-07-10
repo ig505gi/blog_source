@@ -13,7 +13,7 @@ date: 2022-06-18 12:05:49
 课程地址：https://www.coursera.org/learn/build-a-computer
 作业仓库：https://github.com/ig505gi/Nand2Tetris-homework
 
-![课程概览，part1为硬件部分](week1/overview.png)
+![课程概览，part1为下面的硬件部分](week1/overview.png)
 <!-- more -->
 
 ## Week1 布尔运算和逻辑门
