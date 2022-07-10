@@ -108,7 +108,8 @@ navbar:
     menu:
         首页: /
         文章进程: /archives
-        标签分类: /tags
+        标签: /categories
+        分类: /tags
         关于我: https://ig505gi.github.io
     # Links to be shown on the right of the navigation bar
     links:
