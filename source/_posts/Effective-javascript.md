@@ -1,9 +1,10 @@
 ---
 title: Effective javascript
+categories:
+  - 技术书籍笔记
 tags:
   - JavaScript
   - Fronted
-  - 读书笔记
 abbrlink: 41893
 date: 2021-05-15 11:23:19
 ---

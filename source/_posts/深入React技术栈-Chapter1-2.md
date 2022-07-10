@@ -1,10 +1,11 @@
 ---
 title: 深入React技术栈-Chapter1-2
+categories:
+  - 技术书籍笔记
 tags:
   - React
   - Fronted
   - JavaScript
-  - 读书笔记
 abbrlink: 3925
 date: 2021-11-29 22:36:03
 ---

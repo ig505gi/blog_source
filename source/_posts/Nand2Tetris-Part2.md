@@ -1,9 +1,10 @@
 ---
 title: Nand2Tetris-Part2
+categories:
+  - CS网课笔记
 tags:
   - Coursera
   - Computer Science
-  - 网课笔记
   - Full Stack
 abbrlink: 28107
 date: 2022-07-10 16:28:17

@@ -1,10 +1,11 @@
 ---
 title: Java面向对象-慕课学习笔记
+categories:
+  - CS网课笔记
 tags:
   - Mooc
   - Java
-  - 网课笔记
-  - 面向对象
+  - OOP
   - Backend
 abbrlink: 683
 date: 2018-12-25 20:28:23

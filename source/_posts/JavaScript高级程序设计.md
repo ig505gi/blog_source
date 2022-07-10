@@ -1,9 +1,10 @@
 ---
 title: JavaScript高级程序设计
+categories:
+  - 技术书籍笔记
 tags:
   - Fronted
   - JavaScript
-  - 读书笔记
 abbrlink: 53497
 date: 2022-03-21 22:04:08
 ---

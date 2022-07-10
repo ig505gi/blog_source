@@ -1,9 +1,10 @@
 ---
 title: 零基础Java-慕课学习笔记
+categories:
+  - CS网课笔记
 tags:
   - Mooc
   - Java
-  - 网课笔记
   - Backend
 abbrlink: 43762
 date: 2018-12-24 14:53:23

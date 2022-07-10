@@ -1,10 +1,11 @@
 ---
 title: 深入React技术栈-Chapter3-React源码
+categories:
+  - 技术书籍笔记
 tags:
   - React
   - Fronted
   - JavaScript
-  - 读书笔记
 abbrlink: 28293
 date: 2022-02-21 08:47:40
 ---
