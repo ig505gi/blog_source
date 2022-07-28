@@ -38,7 +38,7 @@ VM中应该有四种命令：算术/逻辑、内存访问、分支、函数
 * `eq`: 比较栈顶的两个值，将是否相等的布尔值放回栈顶
 * `or`: 对栈顶的两个值进行逻辑or的操作，并放回栈顶
 
-以此类推。。
+以此类推。。（图中eq应该是x==y）
 ![Stack的方法2](week1/stack-function2.png)
 
 ### 1.2 Memory Segment
@@ -64,6 +64,35 @@ Memory Segment和stack的push和pop方法，都属于抽象的概念。如何转
 * 注意，与stack不同:local/argument/this/that的指针, 一直指向base。
 
 ![local实现](week1/local.png)
+图中的pop local 2用hack assembly实现：
+```
+// 必须借助其他内存空间才能完成
+@2 // Addr = LCL + 2
+D=A
+@LCL
+D=M+D
+@R13
+M=D
+@SP // SP--, D=*SP
+AM=M-1
+D=M
+@R13 // *Addr = D
+A=M
+M=D
+```
+push local 5实现：
+```
+@5 // addr = LCL + 5
+D=A
+@LCL
+A=M+D
+D=M
+@SP // *SP = *addr
+A=M
+M=D
+@SP // SP++
+M=M+1
+```
 argument/this/that和local的实现是一致的
 
 ### 2.4 constant Segment Implement
@@ -71,14 +100,18 @@ constant没有pop操作，也在内存里没有对应的地址
 `push constant i` 转化为 `*SP = i, SP++`
 
 ### 2.5 static Segment Implement
-static因为要保证去全局唯一，比较复杂，加上文件前缀；16~256
+* static因为要保证去全局唯一，比较复杂，加上文件前缀；16~256
+* 文件名+.+数字 确定一个唯一的Label
+
 ![static实现](week1/static实现.png)
 
 ### 2.6 temp Segment Implement
-当编译高级语言的时候，可能会需要一些变量暂时存储，我们的VM只提供8个暂时变量 5~12，实现上几乎和local等是一样的。
+* 当编译高级语言的时候，可能会需要一些变量暂时存储，我们的VM只提供8个暂时变量 5~12，实现上几乎和local等是一样的。
+* 不同点是LCL是指针，`@LCL`是指针操作，要拿出存在LCL位置的值在加上index；而temp是`@5`（5是temp的base），然后`5+index`。
 
 ### 2.7 pointer Segment Implement
-pointer为什么需要：之后写编译器的时候才会解释
+* 注意：跟其他的不同点，该操作的是this或that指针，而其他操作的都是指针指向地址的值
+* pointer为什么需要：之后写编译器的时候才会解释
 ![为什么要pointer segment](week1/为什么要pointer.png)
 pointer的值只有0或1，当0的时候就是访问this，当1的时候，访问that
 ![pointer segment实现](week1/pointer-segment实现.png)
