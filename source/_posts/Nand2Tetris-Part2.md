@@ -135,4 +135,68 @@ codeWriter的主要API：
 code now!
 # **Week2 VM part2**
 
-![](week1/)
+## 0. **overview**
+涉及算术/逻辑、内存访问已经在week1学习。接下来要学习的有以下知识：
+* Branching
+* Functions
+* Function call-and-return
+* Dynamic memory management
+* Stack processing
+* Pointers
+
+然后就完成了VM的实现。
+
+## 1. **branching**
+branching和assembly中的branch几乎一样。
+![branching](week2/branching.png)
+
+## 2. **functions(重点)**
+
+## 2.1 overview/abstraction
+function：在其他地方也有叫method，一个意思。
+一个函数从高阶语言编译成vm伪代码，再到vm代码
+![function overview](week2/function-overview.png)
+
+## 2.2 caller and callee
+左侧的main函数是caller，右侧mult函数是callee，在每个函数内，他们视角中的stack和内存segment是不同的。
+![caller and callee](week2/caller-and-callee.png)
+抽象的说一个call命令，应该做什么；一个return命令，应该做什么
+![call and return](week2/call-and-return.png)
+在一个函数内，也是通过stack和memory segement之间的push/pop操作来进行计算的，那么，当caller调用了callee的时候，caller的状态必须保存下来，运行完callee后，恢复caller的状态，接着运行caller。
+
+## 2.3 implement
+caller的视角
+![caller的视角](week2/caller-view.png)
+callee的视角
+![callee的视角](week2/callee-view.png)
+vm代码
+![vm代码中实现相关语句](week2/vm-view.png)
+### 2.3.1 handling call
+![处理call语句](week2/handling-call.png)
+### 2.3.2 handling function
+![处理function语句](week2/handling-function.png)
+### 2.3.3 handling return
+![处理return语句](week2/handling-return.png)
+
+## 3. **hack平台**
+hack平台的编译和翻译概览
+![jack -> vm -> asm](week2/hack-vm-compilation.png)
+Hack平台的约定
+* 需要有个Main.vm文件；其中一个函数叫main
+* 电脑开启 运行Sys.init
+* Sys.init会call Main.main，然后进入无限循环
+* 约定最开始的两条机器语言指令是：
+```
+// 这两行应该卸载hack ROM中，最开始的两行
+sp=256
+Call Sys.init
+```
+
+目前为止，VM中的特殊字符一共有如下这么多：
+![VM中的特殊字符](week2/vm-special-symbols.png)
+
+## 4.**具体代码实现**
+还是三个模块Main、Parser和CodeWriter。其中CodeWriter需要增加一些方法，Parser需要补充一些逻辑。
+![CodeWriter补充方法](week2/code-writer.png)
+
+project8: code now!
