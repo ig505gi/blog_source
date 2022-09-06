@@ -200,3 +200,11 @@ Call Sys.init
 ![CodeWriter补充方法](week2/code-writer.png)
 
 project8: code now!
+
+## 5.问答
+因为java先转VM再转机器语言(two tier compiler)，
+而C++直接转机器语言，因此快（但微软也开发了C++的two tier compiler）
+java转化为机器语言1000行，C++只需要300行，差不多效率是3倍
+
+# **Week3 **
+
