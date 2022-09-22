@@ -128,3 +128,79 @@ DOM1主要定义的是HTML和XML文档的底层结构
 
 ## Chapter 13 事件
 JS和HTML之间的交互是通过事件实现的。
+
+### 1.事件流
+
+#### 1.1 事件冒泡和事件捕获
+* **事件流**描述的是从页面中接收事件的顺序。但有意思的是，IE和 Netscape开发团队居然提出了差不多是完全相反的事件流的概念。IE的事件流是事件冒泡流，而Netscape Communicator的事件流是事件捕获流。
+* **事件冒泡**从div到body到html到document，自下而上。
+* **事件捕获**从document到html到body到div，自上而下。
+* 由于老版本的浏览器不支持，因此很少有人使用事件捕获。我们也建议读者放心地使用事件冒泡，在有特殊需要时再使用事件捕获。
+
+### 1.2 DOM事件流
+捕获和冒泡都有
+![DOM事件流](DOM事件流.png)
+三个阶段：
+* 事件捕获阶段
+* 处于目标阶段
+* 事件冒泡阶段
+
+### 2 事件处理程序
+#### 2.1 html事件处理程序
+html的onXXX同名属性，传入一段JS代码，就能执行，而且能访问到其他地方的脚本中的变量，以及局部变量event，和this(该元素)
+```html
+<input type="button" value="Click Me" onclick="alert(event.type);alert(this.value);" >
+```
+事件处理程序中的代码在执行时，有权访问全局作用域中的任何代码。
+
+#### 2.2 DOM0级事件处理程序
+
+```javascript
+var btn = document.getElementById("myBtn");
+btn.onclick = function(){
+  alert(this.id); // "myBtn"
+}
+```
+
+#### 2.3 DOM2级事件处理程序
+“DOM2级事件”定义了两个方法，用于处理指定和删除事件处理程序的操作:`addEventListener()` 和 `removeEventListener()`
+接受三个参数：
+* 处理的事件名
+* 事件处理程序的函数
+* 布尔值：如果是true，表示在捕获阶段处理，反之则在冒泡阶段
+
+并且可添加多个事件处理程序
+```javascript
+// 添加
+var btn = document.getElementById("myBtn");
+btn.addEventListener("click", function(){
+  alert(this.id); // "myBtn"
+}, false);
+
+// 删除
+var btn = document.getElementById("myBtn");
+var handler = function(){
+  alert(this.id); // "myBtn"
+};
+btn.addEventListener("click", handler, false);
+
+// ...
+
+btn.removeEventListener("click", handler, false);
+```
+
+### 3 事件对象
+TODO 有哪些属性
+
+### 4 事件类型
+非常多类型，很详细，有需要可以去查询
+
+### 5 内存和性能
+
+* 对“事件处理程序过多”问题的解决方案就是**事件委托**
+添加一个事件处理程序，根据target的属性去做不同的事情。这样只会添加一次。
+* 移除事件处理程序
+
+### 6 模拟事件
+利用JS 在任意时刻触发事件，
+DOM中：document对象上使用createEvent()方法创建event对象
