@@ -49,16 +49,16 @@ Demultiplexor可以从一条数据中按照规律解析成多条数据
 | 值 | 1 | 0 | 1 | 0 |
 | 值 | 1 | 1 | 0 | 1 |
 #### 全加器真值表和接口
-![全加器](week1/fullAdder.png)
+![全加器](week2/fullAdder.png)
 
 ### 2.2 负数和补位
 从左起第一位为0的为正数，为1的为负数，x+(-x)=0，如果不考虑进了一位，也就是2^n
-![负数的计算](week1/negative.png)
+![负数的计算](week2/negative.png)
 
 ### 2.3 ALU
 CPU里的核心计算单元，该项目里设计的比较简单
-![ALU概览](week1/ALU.png)
-![ALU真值表](week1/ALU真值表.png)
+![ALU概览](week2/ALU.png)
+![ALU真值表](week2/ALU真值表.png)
 
 ### Week3 内存
 ### 3.1 Sequential Logic & DFF
