@@ -207,4 +207,27 @@ project8: code now!
 java转化为机器语言1000行，C++只需要300行，差不多效率是3倍
 
 # **Week3 **
+【待整理】
+Main.main程序入口
+2
+面向对象
+3
+链表
+4
+语法
+5
+数据类型
 
+6
+class
+OS的目的
+OS API 8个
+
+7
+method fucntion constructor的区别
+变量类型
+expression和subroutine
+JACK语言的特殊点
+
+8
+jack app demo
